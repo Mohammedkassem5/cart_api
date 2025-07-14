@@ -1,20 +1,32 @@
-import React from 'react';
+import React from "react";
+import "./Products.css";
 
 const Products = (props) => {
-    return (
-      <div className="card" style={{width:"250px"}}>
-        <img src={props.imgSrc} className="card-img-top" style={{width:"100%",height:"10rem",objectFit:"contain"}} />
-        <div className="card-body">
-          <h5 className="card-title">{props.category}</h5>
-          <p className="card-text">
-         {props.price} EGP
-          </p>
-          <a href="#" className="btn btn-primary">
-       AddToCart
-          </a>
-        </div>
+  const handleClick = () => {
+    const productData = {
+      id: props.id,
+      title: props.title, 
+      price: props.price,
+      image: props.imgSrc,
+    };
+    props.onAddToCart(productData);
+  };
+
+  return (
+    <div className="product-card">
+      <div className="image-wrapper">
+        <img src={props.imgSrc} alt={props.title} className="product-image" />
       </div>
-    );
-}
+      <div className="product-content">
+        <h3 className="product-title">{props.title}</h3>
+        <p className="product-category">{props.category}</p>
+        <p className="product-price">{props.price} EGP</p>
+        <button className="product-btn" onClick={handleClick}>
+          🛒 Add to Cart
+        </button>
+      </div>
+    </div>
+  );
+};
 
 export default Products;
