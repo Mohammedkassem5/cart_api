@@ -52,13 +52,13 @@
 
 .product-price {
   font-size: 18px;
-  color: #009688;
+  color: #686868;
   font-weight: bold;
   margin-bottom: 12px;
 }
 
 .product-btn {
-  background-color: #009688;
+  background-color: #000000;
   color: white;
   border: none;
   padding: 10px 16px;
@@ -70,5 +70,5 @@
 }
 
 .product-btn:hover {
-  background-color: #00796b;
+  background-color: #bb1c1c;
 }

@@ -3,7 +3,7 @@ import React from "react";
 const CartSidebar = ({ cartItems, updateQuantity, removeItem }) => {
   return (
     <div
-      className="position-fixed top-0 end-0 bg-white shadow p-3"
+      className="position-fixed top-0 end-0 bg-white shadow p-3 "
       style={{
         width: "300px",
         height: "100vh",
@@ -11,8 +11,8 @@ const CartSidebar = ({ cartItems, updateQuantity, removeItem }) => {
         overflowY: "auto",
       }}
     >
-      <h4 className="mb-4 border-bottom pb-2">
-        🛒 Cart <span className="badge bg-secondary">{cartItems.length}</span>
+      <h4 className="mb-4 border-bottom pb-3">
+        🛒 Cart <span className="badge bg-secondary ">{cartItems.length}</span>
       </h4>
 
       {cartItems.length === 0 ? (

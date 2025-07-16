@@ -5,10 +5,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import "./NavBar.css";
 
-const NavBar = ({ toggleSidebar, searchTerm, setSearchTerm }) => {
+const NavBar = ({ toggleSidebar, searchTerm, setSearchTerm, cartItems }) => {
+  const navigate = useNavigate();
   const tabs = ["Home", "about", "contact", "shop"];
+
+  const handleCheckoutClick = () => {
+    if (!cartItems || cartItems.length === 0) {
+      alert("You must add products first!");
+    } else {
+      navigate("/checkout");
+    }
+  };
 
   return (
     <nav className="noon-navbar">
@@ -31,10 +42,13 @@ const NavBar = ({ toggleSidebar, searchTerm, setSearchTerm }) => {
 
       <div className="nav-right">
         <span className="nav-text">العربية</span>
-        <span className="nav-text">
+
+        <Link to="/login" className="nav-text login-link">
           Log in <FontAwesomeIcon icon={faUser} />
-        </span>
+        </Link>
+
         <FontAwesomeIcon icon={faHeart} className="nav-icon" />
+
         <FontAwesomeIcon
           icon={faShoppingCart}
           className="nav-icon"
@@ -43,6 +57,11 @@ const NavBar = ({ toggleSidebar, searchTerm, setSearchTerm }) => {
             toggleSidebar();
           }}
         />
+
+        {/* ✅ زرار Checkout */}
+        <button onClick={handleCheckoutClick} className="nav-checkout-button">
+          Checkout
+        </button>
       </div>
     </nav>
   );

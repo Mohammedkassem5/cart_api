@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import CartPage from "./Pages/CartPage";
+import LoginPage from "./Pages/LoginPage";
+import CheckoutPage from "./Pages/CheckoutPage"; // ✅ جديد
 import CartSidebar from "./components/CartSidebar";
 import "animate.css";
 import "./App.css";
@@ -44,12 +46,10 @@ function App() {
     );
   };
 
-  
   const removeItem = (id) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  
   const openSidebar = () => {
     setShowSidebar(true);
     setAnimationClass("animate__animated animate__fadeInRight");
@@ -62,7 +62,6 @@ function App() {
     }, 500);
   };
 
- 
   useEffect(() => {
     const handleClickOutside = (e) => {
       const isButton = e.target.closest("button");
@@ -92,6 +91,12 @@ function App() {
             }
           />
           <Route path="/cart" element={<CartPage cartItems={cart} />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route
+            path="/checkout"
+            element={<CheckoutPage cartItems={cart} />}
+          />{" "}
+          {/* ✅ جديد */}
         </Routes>
       </BrowserRouter>
 
