@@ -1,0 +1,77 @@
+.favorites-wrapper {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.favorites-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 20px;
+  width: 100%;
+}
+
+.favorites-page {
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+/* ✅ كارت فاضي محترم عند عدم وجود فيفوريتس */
+.empty-favorite-card {
+  width: 100%;
+  max-width: 400px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.empty-fav-image {
+  width: 160px;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+.empty-favorite-card h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.empty-favorite-card p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.go-home-btn {
+  padding: 0.7rem 1.5rem;
+  background-color: #00c9a7;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.go-home-btn:hover {
+  background-color: #00af93;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

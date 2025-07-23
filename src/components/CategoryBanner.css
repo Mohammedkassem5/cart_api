@@ -1,0 +1,38 @@
+.category-banner {
+  display: flex;
+  overflow-x: auto;
+  padding: 15px 20px;
+  background-color: #f5f5f5;
+  gap: 20px;
+  scrollbar-width: none;
+}
+
+.category-banner::-webkit-scrollbar {
+  display: none;
+}
+
+.category-item {
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.category-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  transition: transform 0.3s;
+}
+
+.category-item:hover img {
+  transform: scale(1.1);
+  border-color: #333;
+}
+
+.category-item p {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
