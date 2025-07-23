@@ -1,18 +1,18 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import "animate.css"
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/js/bootstrap.js'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import AppWrapper from "./App.jsx";
+import "animate.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <AppWrapper />
+  </StrictMode>
+);
 
-createRoot(document.getElementById('root')).render(
-
-    <App />
-
-)
 // #Essentials
 // npm i -D react-router-dom@latest
 //  npm i sass

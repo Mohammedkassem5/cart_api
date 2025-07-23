@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./NavBar.css";
+import logo from "../assets/logo.png";
+
+
 import { toast } from "react-toastify"; // ✅ لازم تكون مستوردها
 
 const NavBar = ({ toggleSidebar, searchTerm, setSearchTerm, cartItems }) => {
@@ -30,12 +33,13 @@ const NavBar = ({ toggleSidebar, searchTerm, setSearchTerm, cartItems }) => {
       <div className="nav-left">
         {/* ✅ التعديل هنا: */}
         <img
-          src="/logo.png"
+          src={logo}
           alt="logo"
           className="nav-logo"
           onClick={() => navigate("/")}
           style={{ cursor: "pointer" }}
         />
+
         <span className="nav-location">
           Deliver to <strong>Cairo</strong>
         </span>

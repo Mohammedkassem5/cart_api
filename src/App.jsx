@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { HashRouter, Route, Routes, useNavigate } from "react-router-dom";
 import HomePage from "./Pages/HomePage";
 import CartPage from "./Pages/CartPage";
 import LoginPage from "./Pages/LoginPage";
@@ -20,7 +20,7 @@ function App() {
   const [animationClass, setAnimationClass] = useState("");
   const sidebarRef = useRef();
 
-  const navigate = useNavigate(); // ✅ لازم نستخدمه داخل component في <BrowserRouter>
+  const navigate = useNavigate();
 
   useEffect(() => {
     const storedCart = localStorage.getItem("my_cart");
@@ -102,7 +102,6 @@ function App() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  // ✅ Handle Checkout Click from Navbar
   const handleCheckoutClick = () => {
     if (!cart || cart.length === 0) {
       toast.error("🛒 You must add products first!", {
@@ -130,7 +129,7 @@ function App() {
               }
               toggleFavorite={toggleFavorite}
               favorites={favorites}
-              onCheckoutClick={handleCheckoutClick} // ✅ Send to Navbar
+              onCheckoutClick={handleCheckoutClick}
             />
           }
         />
@@ -172,10 +171,11 @@ function App() {
   );
 }
 
+// ✅ استخدمنا HashRouter بدل BrowserRouter
 export default function AppWrapper() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <App />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
