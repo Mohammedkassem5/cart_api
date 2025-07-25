@@ -9,17 +9,18 @@ import CartSidebar from "./components/CartSidebar";
 import "animate.css";
 import "./App.css";
 
-// ✅ Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [cartLoaded, setCartLoaded] = useState(false);
+  const [favoritesLoaded, setFavoritesLoaded] = useState(false);
+
   const [showSidebar, setShowSidebar] = useState(false);
   const [animationClass, setAnimationClass] = useState("");
   const sidebarRef = useRef();
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,20 +28,26 @@ function App() {
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
+    setCartLoaded(true);
 
     const storedFavorites = localStorage.getItem("my_favorites");
     if (storedFavorites) {
       setFavorites(JSON.parse(storedFavorites));
     }
+    setFavoritesLoaded(true);
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("my_cart", JSON.stringify(cart));
-  }, [cart]);
+    if (cartLoaded) {
+      localStorage.setItem("my_cart", JSON.stringify(cart));
+    }
+  }, [cart, cartLoaded]);
 
   useEffect(() => {
-    localStorage.setItem("my_favorites", JSON.stringify(favorites));
-  }, [favorites]);
+    if (favoritesLoaded) {
+      localStorage.setItem("my_favorites", JSON.stringify(favorites));
+    }
+  }, [favorites, favoritesLoaded]);
 
   const handleAddToCart = (product) => {
     setCart((prev) => {
@@ -53,6 +60,7 @@ function App() {
         return [...prev, { ...product, quantity: 1 }];
       }
     });
+    // toast.success("✅ Added to cart!");
   };
 
   const toggleFavorite = (product) => {
@@ -64,6 +72,7 @@ function App() {
         return [...prev, product];
       }
     });
+    toast.info("⭐ Favorites updated!");
   };
 
   const updateQuantity = (id, newQty) => {
@@ -171,7 +180,6 @@ function App() {
   );
 }
 
-// ✅ استخدمنا HashRouter بدل BrowserRouter
 export default function AppWrapper() {
   return (
     <HashRouter>
